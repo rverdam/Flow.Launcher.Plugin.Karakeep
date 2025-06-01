@@ -4,15 +4,15 @@ from pyflowlauncher.settings import settings
 from pyflowlauncher.icons import RECYCLEBIN, SETTINGS, LINK
 from requests import HTTPError
 
-from .hoarder import HoarderAPI
+from .karakeep import KarakeepAPI
 from results import query_results, context_menu_results, no_api_token_results, no_base_url_results, error_results
 
 plugin = Plugin()
 
 @plugin.on_method
 def query(query: str):
-    baseUrl = settings().get('hoarderBaseAddress')
-    apiKey = settings().get('hoarderApiKey')
+    baseUrl = settings().get('karakeepBaseAddress')
+    apiKey = settings().get('karakeepApiKey')
     
     if not baseUrl:
         return send_results([no_base_url_results()])
@@ -20,10 +20,10 @@ def query(query: str):
     if not apiKey:
         return send_results([no_api_token_results()])
     
-    hoarder_api = HoarderAPI(base_url=baseUrl, api_key=apiKey)
+    karakeep_api = KarakeepAPI(base_url=baseUrl, api_key=apiKey)
     
     return send_results(
-        query_results (hoarder_api, query)     
+        query_results (karakeep_api, query)     
     )
 
 @plugin.on_method

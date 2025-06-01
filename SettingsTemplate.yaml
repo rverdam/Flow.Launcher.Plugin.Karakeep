@@ -2,10 +2,10 @@
 body:
   - type: input
     attributes:
-      name: hoarderBaseAddress
-      label: Hoarder Base Address
-      description: Hoarder Base Url (e.g. https://hoarder.example.com)
+      name: karakeepBaseAddress
+      label: Karakeep Base Address
+      description: Karakeep Base Url (e.g. https://karakeep.example.com)
   - type: passwordBox
     attributes:
-      name: hoarderApiKey
-      label: Hoarder API Key
+      name: karakeepApiKey
+      label: Karakeep API Key
