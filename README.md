@@ -1,26 +1,26 @@
-# Hoarder Plugin
+# Karakeep Plugin
 
-Hoarder is a FlowLauncher plugin that allows you to search for bookmarks stored in the Hoarder application. This plugin provides a quick and easy way to access your saved bookmarks directly from the FlowLauncher interface.
+Karakeep is a FlowLauncher plugin that allows you to search for bookmarks stored in the Karakeep application. This plugin provides a quick and easy way to access your saved bookmarks directly from the FlowLauncher interface.
 
 ## Installation
 
 You can install this plugin via the FlowLauncher plugin manager with the following command:
 
 ```
-pm install Hoarder
+pm install Karakeep
 ```
 
 ## Configuration
 
-Before you can use this plugin, you will need to configure it with your local Hoarder instance's base URL and API key. You can do this by setting the following two values in the plugin's settings:
+Before you can use this plugin, you will need to configure it with your local Karakeep instance's base URL and API key. You can do this by setting the following two values in the plugin's settings:
 
-- `Hoarder Base Address`: This is the base URL of your local Hoarder instance. For example, if you run Hoarder on http://localhost:8080, then this should be set to `http://localhost:8080`.
+- `Karakeep Base Address`: This is the base URL of your local Karakeep instance. For example, if you run Karakeep on http://localhost:8080, then this should be set to `http://localhost:8080`.
 
-- `Hoarder API Key`: This is the API key that allows the plugin to access your Hoarder bookmarks. You can obtain this key from the Hoarder web interface by going to your profile settings > User Settings > API Keys page and clicking on "New API Key".
+- `Karakeep API Key`: This is the API key that allows the plugin to access your Karakeep bookmarks. You can obtain this key from the Karakeep web interface by going to your profile settings > User Settings > API Keys page and clicking on "New API Key".
 
 ## Usage
 
-Once installed, you can activate the Hoarder plugin by using the action keyword `ho`. Simply type `ho` followed by your search query to find matching bookmarks stored in Hoarder.
+Once installed, you can activate the Karakeep plugin by using the action keyword `ho`. Simply type `ho` followed by your search query to find matching bookmarks stored in Karakeep.
 
 ### Example
 
@@ -32,7 +32,7 @@ ho Python
 
 ## Features
 
-- **Quick Search**: Instantly search through your Hoarder bookmarks and notes (only contents).
+- **Quick Search**: Instantly search through your Karakeep bookmarks and notes (only contents).
 - **Easy Access**: Open bookmarks and notes directly from FlowLauncher and copy notes contents.
 - **Context Menu**: Access additional options using the context menu.
 
@@ -49,7 +49,7 @@ This plugin is developed using Python and leverages the FlowLauncher API to inte
 
 ## Author
 
-Hoarder Plugin is developed by Robert Verdam. You can find more about this plugin and contribute to its development on [GitHub](https://github.com/rverdam/Flow.Launcher.Plugin.Hoarder).
+Karakeep Plugin is developed by Robert Verdam. You can find more about this plugin and contribute to its development on [GitHub](https://github.com/rverdam/Flow.Launcher.Plugin.Karakeep).
 
 ## License
 

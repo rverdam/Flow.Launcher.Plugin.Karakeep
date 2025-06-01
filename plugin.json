@@ -1,12 +1,12 @@
 {
     "ID": "cf3dd749-166c-4cbe-8e85-d8d3f2057119",
-    "ActionKeyword": "ho",
-    "Name": "Hoarder",
-    "Description": "Hoarder Plugin",
+    "ActionKeyword": "ka",
+    "Name": "Karakeep",
+    "Description": "Karakeep (former Hoarder) Plugin",
     "Author": "Robert Verdam",
-    "Version": "1.0.3",
+    "Version": "1.0.4",
     "Language": "python",
-    "Website": "https://github.com/rverdam/Flow.Launcher.Plugin.Hoarder",
+    "Website": "https://github.com/rverdam/Flow.Launcher.Plugin.Karakeep",
     "IcoPath": "Images\\app.png",
     "ExecuteFileName": "run.py"
 }
