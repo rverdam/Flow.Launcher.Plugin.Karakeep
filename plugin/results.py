@@ -7,6 +7,13 @@ from html import unescape
 from strip_markdown import strip_markdown
 from plugin.karakeep import KarakeepAPI
 
+
+def _html_text(value, default="") -> str:
+    """Return a display-safe string for nullable Karakeep API fields."""
+    if value is None:
+        return default
+    return unescape(str(value))
+
 def error_results(error: str, JsonRPCAction=None):
     """
     Returns a Result representing a Karakeep plugin error.
@@ -59,17 +66,24 @@ def query_result(item) -> Result:
     :param item: a Karakeep API query item
     :return: a Result object
     """
-    content = item.get("content")
+    content = item.get("content") or {}
     match content.get("type"):
         case "link":
             # If the content type is a link, then we have a title, subtitle and
             # an icon path. The json rpc action is a function that will be
             # called when the user clicks on the result.
-            title = content.get("title")
-            subtitle = unescape(content.get("description"))
-            icon_path = content.get("imageUrl")
+            url = (
+                content.get("url")
+                or f"{settings().get('karakeepBaseAddress')}/dashboard/preview/{item.get('id')}"
+            )
+            title = content.get("title") or item.get("title") or url or "Untitled link"
+            subtitle = _html_text(
+                content.get("description"),
+                item.get("summary") or item.get("note") or "",
+            )
+            icon_path = content.get("imageUrl") or content.get("favicon")
             context_data = [{
-                "url": content.get("url"),
+                "url": url,
                 "action": "copy_url"
             },
             {
@@ -77,7 +91,7 @@ def query_result(item) -> Result:
                  "action": "open_url"
             }
             ]
-            json_rpc_action = open_url(content.get("url"))
+            json_rpc_action = open_url(url)
             return Result(
                 Title=title, SubTitle=subtitle, IcoPath=icon_path,
                 ContextData=context_data, JsonRPCAction=json_rpc_action
@@ -88,17 +102,18 @@ def query_result(item) -> Result:
             # an icon path. The json rpc action is a function that will be
             # called when the user clicks on the result.
             url = f"{settings().get('karakeepBaseAddress')}/dashboard/preview/{item.get('id')}"
-            firstNoteLine = strip_markdown(content.get('text').split('\n')[0])
+            text = content.get('text') or ""
+            firstNoteLine = strip_markdown(text.split('\n')[0])
             title = item.get("title") if item.get("title") else firstNoteLine
             subtitle = firstNoteLine
-            title = f"Note: {title}"
+            title = f"Note: {title or 'Untitled note'}"
             json_rpc_action = open_url(url)
             context_data = [{
-                "text": content.get("text"),
+                "text": text,
                 "action": "copy_markdown_text"
             }]
             return Result(
-                Title=title, CopyText=content.get("text"),
+                Title=title, CopyText=text,
                 SubTitle=subtitle,
                 IcoPath=COPY,
                 ContextData=context_data, JsonRPCAction=json_rpc_action
@@ -112,9 +127,9 @@ def query_results(Karakeep: KarakeepAPI, query: str):
     :param query: the search query
     :yield: a sequence of Result objects
     """
-    search = Karakeep.search_bookmarks(query)
+    search = Karakeep.search_bookmarks(query) or []
     for item in search:
-        content = item.get("content")
+        content = item.get("content") or {}
         if content.get("type") in ("link", "text"):
             yield query_result(item)
 

@@ -4,7 +4,7 @@
     "Name": "Karakeep",
     "Description": "Karakeep (former Hoarder) Plugin",
     "Author": "Robert Verdam",
-    "Version": "1.0.4",
+    "Version": "1.0.5",
     "Language": "python",
     "Website": "https://github.com/rverdam/Flow.Launcher.Plugin.Karakeep",
     "IcoPath": "Images\\app.png",
