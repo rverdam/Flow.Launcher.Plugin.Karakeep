@@ -28,14 +28,14 @@ A key with `bookmarks:readwrite` or `fullaccess` will also work, but is not requ
 
 ## Usage
 
-Once installed, you can activate the Karakeep plugin by using the action keyword `ho`. Simply type `ho` followed by your search query to find matching bookmarks stored in Karakeep.
+Once installed, you can activate the Karakeep plugin by using the default action keyword `ka`. Simply type `ka` followed by your search query to find matching bookmarks stored in Karakeep.
 
 ### Example
 
 To search for a bookmark related to "Python", you would use the following command in FlowLauncher:
 
 ```
-ho Python
+ka Python
 ```
 
 ## Features
