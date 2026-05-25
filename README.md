@@ -16,7 +16,15 @@ Before you can use this plugin, you will need to configure it with your local Ka
 
 - `Karakeep Base Address`: This is the base URL of your local Karakeep instance. For example, if you run Karakeep on http://localhost:8080, then this should be set to `http://localhost:8080`.
 
-- `Karakeep API Key`: This is the API key that allows the plugin to access your Karakeep bookmarks. You can obtain this key from the Karakeep web interface by going to your profile settings > User Settings > API Keys page and clicking on "New API Key".
+- `Karakeep API Key`: This is the API key that allows the plugin to search and open your Karakeep bookmarks. You can obtain this key from the Karakeep web interface by going to your profile settings > User Settings > API Keys page and clicking on "New API Key".
+
+### API key permissions
+
+The plugin only calls `GET /api/v1/bookmarks/search`, so the minimum Karakeep API key scope is:
+
+- `bookmarks:read`
+
+A key with `bookmarks:readwrite` or `fullaccess` will also work, but is not required. Prefer `bookmarks:read` for day-to-day use because the plugin does not create, edit, or delete bookmarks.
 
 ## Usage
 
